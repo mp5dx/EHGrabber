@@ -62,9 +62,10 @@
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(814, 9);
+            this.button1.Location = new System.Drawing.Point(745, 7);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 23);
+            this.button1.Size = new System.Drawing.Size(52, 22);
             this.button1.TabIndex = 0;
             this.button1.Text = "Get!";
             this.button1.UseVisualStyleBackColor = true;
@@ -72,20 +73,22 @@
             // 
             // URLBox
             // 
-            this.URLBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.URLBox.Location = new System.Drawing.Point(62, 10);
+            this.URLBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.URLBox.Location = new System.Drawing.Point(46, 8);
+            this.URLBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.URLBox.Name = "URLBox";
-            this.URLBox.Size = new System.Drawing.Size(742, 22);
+            this.URLBox.Size = new System.Drawing.Size(693, 21);
             this.URLBox.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Location = new System.Drawing.Point(9, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 17);
+            this.label1.Size = new System.Drawing.Size(23, 12);
             this.label1.TabIndex = 4;
             this.label1.Text = "URL";
             // 
@@ -99,9 +102,10 @@
             this.PicLabel,
             this.WarningLabel,
             this.toolStripDropDownButton1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 484);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 388);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(892, 26);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(804, 26);
             this.statusStrip1.TabIndex = 10;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -109,30 +113,30 @@
             // 
             this.toolStripStatusLabel1.DoubleClickEnabled = true;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(147, 21);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(128, 21);
             this.toolStripStatusLabel1.Text = "Double click to login";
             this.toolStripStatusLabel1.DoubleClick += new System.EventHandler(this.toolStripStatusLabel1_DoubleClick);
             // 
             // progressBar1
             // 
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 20);
+            this.progressBar1.Size = new System.Drawing.Size(75, 20);
             // 
             // PageLabel
             // 
             this.PageLabel.Name = "PageLabel";
-            this.PageLabel.Size = new System.Drawing.Size(85, 21);
+            this.PageLabel.Size = new System.Drawing.Size(80, 21);
             this.PageLabel.Text = "Page:          ";
             // 
             // progressBar2
             // 
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(100, 20);
+            this.progressBar2.Size = new System.Drawing.Size(75, 20);
             // 
             // PicLabel
             // 
             this.PicLabel.Name = "PicLabel";
-            this.PicLabel.Size = new System.Drawing.Size(97, 21);
+            this.PicLabel.Size = new System.Drawing.Size(90, 21);
             this.PicLabel.Text = "Picture:          ";
             // 
             // WarningLabel
@@ -152,7 +156,7 @@
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(74, 24);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(67, 24);
             this.toolStripDropDownButton1.Text = "Options";
             // 
             // automaticDownloadToolStripMenuItem
@@ -160,23 +164,23 @@
             this.automaticDownloadToolStripMenuItem.Checked = true;
             this.automaticDownloadToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.automaticDownloadToolStripMenuItem.Name = "automaticDownloadToolStripMenuItem";
-            this.automaticDownloadToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
+            this.automaticDownloadToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.automaticDownloadToolStripMenuItem.Text = "Auto Download";
             this.automaticDownloadToolStripMenuItem.Click += new System.EventHandler(this.automaticDownloadToolStripMenuItem_Click);
             // 
             // autoOpenToolStripMenuItem
             // 
             this.autoOpenToolStripMenuItem.Name = "autoOpenToolStripMenuItem";
-            this.autoOpenToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
+            this.autoOpenToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.autoOpenToolStripMenuItem.Text = "Auto Open";
             this.autoOpenToolStripMenuItem.Click += new System.EventHandler(this.autoOpenToolStripMenuItem_Click);
             // 
             // listView1
             // 
             this.listView1.AllowColumnReorder = true;
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Number,
             this.URL,
@@ -184,9 +188,10 @@
             this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(0, 38);
+            this.listView1.Location = new System.Drawing.Point(0, 33);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(892, 447);
+            this.listView1.Size = new System.Drawing.Size(805, 353);
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -264,9 +269,9 @@
             // MainForm
             // 
             this.AcceptButton = this.button1;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 510);
+            this.ClientSize = new System.Drawing.Size(804, 414);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label1);
@@ -274,7 +279,8 @@
             this.Controls.Add(this.button1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(900, 200);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MinimumSize = new System.Drawing.Size(679, 160);
             this.Name = "MainForm";
             this.Text = "EHGrabber";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
