@@ -16,7 +16,7 @@ namespace EHGrabber
 
     public class WebPage
     {
-        protected string m_URL; // Should not ended with '/'
+        protected string m_URL; // Should not end with '/'
         protected string m_source;
 
         public void ShowSource(string Source)
