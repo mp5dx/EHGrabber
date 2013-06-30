@@ -63,7 +63,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(745, 7);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(52, 22);
             this.button1.TabIndex = 0;
@@ -77,10 +77,11 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.URLBox.Location = new System.Drawing.Point(46, 8);
-            this.URLBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.URLBox.Margin = new System.Windows.Forms.Padding(2);
             this.URLBox.Name = "URLBox";
             this.URLBox.Size = new System.Drawing.Size(693, 21);
             this.URLBox.TabIndex = 2;
+            this.URLBox.Enter += new System.EventHandler(this.URLBox_Enter);
             // 
             // label1
             // 
@@ -102,7 +103,7 @@
             this.PicLabel,
             this.WarningLabel,
             this.toolStripDropDownButton1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 388);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 399);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
             this.statusStrip1.Size = new System.Drawing.Size(804, 26);
@@ -143,7 +144,7 @@
             // 
             this.WarningLabel.AutoSize = false;
             this.WarningLabel.Name = "WarningLabel";
-            this.WarningLabel.Size = new System.Drawing.Size(251, 21);
+            this.WarningLabel.Size = new System.Drawing.Size(222, 21);
             // 
             // toolStripDropDownButton1
             // 
@@ -189,9 +190,9 @@
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(0, 33);
-            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(805, 353);
+            this.listView1.Size = new System.Drawing.Size(805, 364);
             this.listView1.TabIndex = 11;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -271,7 +272,7 @@
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 414);
+            this.ClientSize = new System.Drawing.Size(804, 425);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label1);
@@ -279,8 +280,8 @@
             this.Controls.Add(this.button1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MinimumSize = new System.Drawing.Size(679, 160);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(820, 160);
             this.Name = "MainForm";
             this.Text = "EHGrabber";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);

@@ -435,5 +435,13 @@ namespace EHGrabber
         {
             autoOpenToolStripMenuItem.Checked = !autoOpenToolStripMenuItem.Checked;
         }
+
+        private void URLBox_Enter(object sender, EventArgs e)
+        {
+            string clipboard=Clipboard.GetText();
+            if (clipboard.Contains("exhentai.org") || clipboard.Contains("g.e-hentai.org"))
+                URLBox.Text = clipboard;
+        }
+
     }
 }
