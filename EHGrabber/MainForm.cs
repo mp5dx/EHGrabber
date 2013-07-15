@@ -21,7 +21,7 @@ namespace EHGrabber
         private bool Clickable;
         private static bool BtnStatus;
         private string GalleryName;
-        private string Library;
+        public string Library;
         public static int SecToSuspend=15;  // sec
         public static int FetchingInterval = 1000; // ms
 
@@ -64,7 +64,7 @@ namespace EHGrabber
             Registry.SetValue(@"HKEY_CURRENT_USER\SOFTWARE\EHGrabber", "LIB", Path);
         }
 
-        private void GetLibraryPath(out string Path)
+        public static void GetLibraryPath(out string Path)
         {
             Path=(string)Registry.GetValue(@"HKEY_CURRENT_USER\SOFTWARE\EHGrabber", "LIB", null);
         }
@@ -129,8 +129,10 @@ namespace EHGrabber
                     {
                         toolStripStatusLabel1.Text = "Stop to login";
                     }
-                    m_WorkThread = new Thread(() => new FrontPage(URLBox.Text, Update_PageProgress));
+                    DownloadForm Downloader=new DownloadForm(Library);
+                    m_WorkThread = new Thread(() => new FrontPage(URLBox.Text,new DownloadContext(null,Downloader, Update_PageProgress)));
                     m_WorkThread.Start();
+                    Downloader.Show();
                     button1.Text = "Stop";
                     BtnStatus = true;
                 }
@@ -199,11 +201,13 @@ namespace EHGrabber
             }
         }
 
-        public void Update_PageProgress(int MaxPage, int CurPage, int MaxPic, int CurPic)
+
+
+        public void Update_PageProgress(int MaxPage, int CurPage, int MaxPic, int CurPic, DownloadContext Context)
         {
             if (InvokeRequired)
             {
-                Invoke(new ProgCallBack(this.Update_PageProgress), MaxPage, CurPage, MaxPic, CurPic);
+                Invoke(new ProgCallBack(this.Update_PageProgress), MaxPage, CurPage, MaxPic, CurPic, Context);
             }
             else
             {
@@ -377,8 +381,7 @@ namespace EHGrabber
 
         public void StartDownloadLVItems(string Savepath = null)
         {
-            DownloadForm Dlder = new DownloadForm(listView1.Items, Savepath, GalleryName);
-            Dlder.Show();
+
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)

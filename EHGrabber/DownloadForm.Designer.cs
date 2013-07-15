@@ -33,12 +33,12 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.File = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.URL = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Page = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.forceExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Page = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,8 +52,9 @@
             this.listView1.ContextMenuStrip = this.contextMenuStrip1;
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(759, 386);
+            this.listView1.Size = new System.Drawing.Size(569, 290);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -68,6 +69,11 @@
             this.URL.Text = "URL";
             this.URL.Width = 155;
             // 
+            // Page
+            // 
+            this.Page.Text = "PageURL";
+            this.Page.Width = 292;
+            // 
             // Status
             // 
             this.Status.Text = "Status";
@@ -78,33 +84,29 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.forceExitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(143, 28);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(131, 26);
             // 
             // forceExitToolStripMenuItem
             // 
             this.forceExitToolStripMenuItem.Name = "forceExitToolStripMenuItem";
-            this.forceExitToolStripMenuItem.Size = new System.Drawing.Size(142, 24);
+            this.forceExitToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.forceExitToolStripMenuItem.Text = "Force Exit";
             this.forceExitToolStripMenuItem.Click += new System.EventHandler(this.forceExitToolStripMenuItem_Click);
             // 
             // timer1
             // 
-            this.timer1.Interval = 3000;
+            this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // Page
-            // 
-            this.Page.Text = "PageURL";
-            this.Page.Width = 292;
             // 
             // DownloadForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(759, 386);
+            this.ClientSize = new System.Drawing.Size(569, 290);
             this.Controls.Add(this.listView1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DownloadForm";
             this.Text = "Downloader";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DownloadForm_FormClosing);

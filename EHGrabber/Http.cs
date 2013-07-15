@@ -12,7 +12,7 @@ using System.Threading;
 namespace EHGrabber
 {
 
-    public delegate void ProgCallBack(int MaxPage,int CurPage,int MaxPic,int CurPic);
+    public delegate void ProgCallBack(int MaxPage,int CurPage,int MaxPic,int CurPic,DownloadContext Context);
 
     public class WebPage
     {
@@ -78,6 +78,7 @@ namespace EHGrabber
 
     public class PicPage : WebPage
     {
+        public string m_PicURL;
 
         private string PostProcessing(ref string URL)
         {
@@ -114,7 +115,8 @@ namespace EHGrabber
         {
             if (PlainMode)
                 return;
-            MainForm.Me.ResultWriteLine(GetPicURL(),m_URL);
+            m_PicURL = GetPicURL();
+            MainForm.Me.ResultWriteLine(m_PicURL,m_URL);
             Thread.Sleep(MainForm.FetchingInterval);
         }
     }
@@ -132,7 +134,7 @@ namespace EHGrabber
             }
         }
 
-        public GalleryPage(string URL,int MPage,int CPage,ProgCallBack NotifyFunc=null) :base(URL)
+        public GalleryPage(string URL,int MPage,int CPage,DownloadContext Context) :base(URL)
         {
             m_PicList=new List<string>();
             FetchPicList();
@@ -140,10 +142,11 @@ namespace EHGrabber
             foreach (string PicPageURL in m_PicList)
                 DbgFormFactory.GetDbgForm().WriteLine(PicPageURL);
             int PicNum = 0;
-            foreach (string PicURL in m_PicList)
+            foreach (string PicPageURL in m_PicList)
             {
-                NotifyFunc(MPage, CPage, m_PicList.Count, ++PicNum);
-                new PicPage(PicURL);
+                Context.m_URL = new PicPage(PicPageURL).m_PicURL;
+                Context.m_Notify(MPage, CPage, m_PicList.Count, ++PicNum, Context);
+                Context.m_Downloader.AddFile(PicPageURL, Context.m_URL);
             }
             
         }
@@ -176,20 +179,26 @@ namespace EHGrabber
                 m_PageList.Add(string.Format("{0}/?p={1}", m_URL, i));
         }
 
-        public FrontPage(string URL,ProgCallBack NotifyFunc=null) : base(URL)
+        public FrontPage(string URL,DownloadContext Context) : base(URL)
         {
             m_PageList = new List<string>();
             m_URL = URL.TrimEnd('/');
+            string Library;
+            MainForm.GetLibraryPath(out Library);
 
-            MainForm.Me.SetGalleryTitle(GetGalleryName());
+            string GalleryName=GetGalleryName();
+            MainForm.Me.SetGalleryTitle(GalleryName);
+            Context.m_Downloader.GalleryName = GalleryName;
+
             FetchPageList();
             DbgFormFactory.GetDbgForm().WriteLine("Page List:");
             foreach (string GalleryPageURL in m_PageList)
                 DbgFormFactory.GetDbgForm().WriteLine(GalleryPageURL);
             int Page=0;
             foreach (string GalleryPageURL in m_PageList)
-                new GalleryPage(GalleryPageURL,m_PageList.Count,++Page,NotifyFunc);
+                new GalleryPage(GalleryPageURL,m_PageList.Count,++Page,Context);
 
+            Context.m_Downloader.Done = true;
             MainForm.Me.Invoke(new MethodInvoker(delegate { MainForm.Me.Abort(); }));
         }
     }

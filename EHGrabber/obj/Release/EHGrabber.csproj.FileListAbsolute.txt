@@ -22,3 +22,14 @@ C:\Users\Babel\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Rel
 C:\Users\Babel\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.Properties.Resources.resources
 C:\Users\Babel\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\GenerateResource.read.1.tlog
 C:\Users\Babel\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\GenerateResource.write.1.tlog
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.exe
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.pdb
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\bin\Release\EHGrabber.exe
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\bin\Release\EHGrabber.pdb
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.csprojResolveAssemblyReference.cache
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.DownloadForm.resources
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.LoginForm.resources
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.MainForm.resources
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.DbgForm.resources
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.Properties.Resources.resources
+C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.csproj.GenerateResource.Cache
