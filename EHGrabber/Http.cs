@@ -146,7 +146,8 @@ namespace EHGrabber
             {
                 Context.m_URL = new PicPage(PicPageURL).m_PicURL;
                 Context.m_Notify(MPage, CPage, m_PicList.Count, ++PicNum, Context);
-                Context.m_Downloader.AddFile(PicPageURL, Context.m_URL);
+                if(Context.m_Downloader!=null)
+                    Context.m_Downloader.AddFile(PicPageURL, Context.m_URL);
             }
             
         }
@@ -188,7 +189,9 @@ namespace EHGrabber
 
             string GalleryName=GetGalleryName();
             MainForm.Me.SetGalleryTitle(GalleryName);
-            Context.m_Downloader.GalleryName = GalleryName;
+            
+            if(Context.m_Downloader!=null)
+                Context.m_Downloader.GalleryName = GalleryName;
 
             FetchPageList();
             DbgFormFactory.GetDbgForm().WriteLine("Page List:");
@@ -198,7 +201,8 @@ namespace EHGrabber
             foreach (string GalleryPageURL in m_PageList)
                 new GalleryPage(GalleryPageURL,m_PageList.Count,++Page,Context);
 
-            Context.m_Downloader.Done = true;
+            if (Context.m_Downloader != null)
+                Context.m_Downloader.Done = true;
             MainForm.Me.Invoke(new MethodInvoker(delegate { MainForm.Me.Abort(); }));
         }
     }

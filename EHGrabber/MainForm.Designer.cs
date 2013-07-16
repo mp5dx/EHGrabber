@@ -73,9 +73,9 @@
             // 
             // URLBox
             // 
-            this.URLBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.URLBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.URLBox.Location = new System.Drawing.Point(46, 8);
             this.URLBox.Margin = new System.Windows.Forms.Padding(2);
             this.URLBox.Name = "URLBox";
@@ -114,7 +114,7 @@
             // 
             this.toolStripStatusLabel1.DoubleClickEnabled = true;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(128, 21);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(127, 21);
             this.toolStripStatusLabel1.Text = "Double click to login";
             this.toolStripStatusLabel1.DoubleClick += new System.EventHandler(this.toolStripStatusLabel1_DoubleClick);
             // 
@@ -126,7 +126,7 @@
             // PageLabel
             // 
             this.PageLabel.Name = "PageLabel";
-            this.PageLabel.Size = new System.Drawing.Size(80, 21);
+            this.PageLabel.Size = new System.Drawing.Size(79, 21);
             this.PageLabel.Text = "Page:          ";
             // 
             // progressBar2
@@ -137,7 +137,7 @@
             // PicLabel
             // 
             this.PicLabel.Name = "PicLabel";
-            this.PicLabel.Size = new System.Drawing.Size(90, 21);
+            this.PicLabel.Size = new System.Drawing.Size(89, 21);
             this.PicLabel.Text = "Picture:          ";
             // 
             // WarningLabel
@@ -157,7 +157,7 @@
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(67, 24);
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(66, 24);
             this.toolStripDropDownButton1.Text = "Options";
             // 
             // automaticDownloadToolStripMenuItem
@@ -165,23 +165,23 @@
             this.automaticDownloadToolStripMenuItem.Checked = true;
             this.automaticDownloadToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.automaticDownloadToolStripMenuItem.Name = "automaticDownloadToolStripMenuItem";
-            this.automaticDownloadToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.automaticDownloadToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.automaticDownloadToolStripMenuItem.Text = "Auto Download";
             this.automaticDownloadToolStripMenuItem.Click += new System.EventHandler(this.automaticDownloadToolStripMenuItem_Click);
             // 
             // autoOpenToolStripMenuItem
             // 
             this.autoOpenToolStripMenuItem.Name = "autoOpenToolStripMenuItem";
-            this.autoOpenToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.autoOpenToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.autoOpenToolStripMenuItem.Text = "Auto Open";
             this.autoOpenToolStripMenuItem.Click += new System.EventHandler(this.autoOpenToolStripMenuItem_Click);
             // 
             // listView1
             // 
             this.listView1.AllowColumnReorder = true;
-            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Number,
             this.URL,
@@ -225,20 +225,20 @@
             this.toolStripSeparator2,
             this.MenuItem_Dbg});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 112);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(165, 126);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // MenuItem_CopyAll
             // 
             this.MenuItem_CopyAll.Name = "MenuItem_CopyAll";
-            this.MenuItem_CopyAll.Size = new System.Drawing.Size(182, 24);
+            this.MenuItem_CopyAll.Size = new System.Drawing.Size(164, 22);
             this.MenuItem_CopyAll.Text = "Copy All";
             this.MenuItem_CopyAll.Click += new System.EventHandler(this.aToolStripMenuItem_Click);
             // 
             // MenuItem_CopySel
             // 
             this.MenuItem_CopySel.Name = "MenuItem_CopySel";
-            this.MenuItem_CopySel.Size = new System.Drawing.Size(182, 24);
+            this.MenuItem_CopySel.Size = new System.Drawing.Size(164, 22);
             this.MenuItem_CopySel.Text = "Copy Selected";
             this.MenuItem_CopySel.Visible = false;
             this.MenuItem_CopySel.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
@@ -246,24 +246,25 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(179, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
             // 
             // MenuItem_DldAll
             // 
             this.MenuItem_DldAll.Name = "MenuItem_DldAll";
-            this.MenuItem_DldAll.Size = new System.Drawing.Size(182, 24);
+            this.MenuItem_DldAll.Size = new System.Drawing.Size(164, 22);
             this.MenuItem_DldAll.Text = "Download All";
+            this.MenuItem_DldAll.Visible = false;
             this.MenuItem_DldAll.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
             // 
             // MenuItem_Dbg
             // 
             this.MenuItem_Dbg.Name = "MenuItem_Dbg";
-            this.MenuItem_Dbg.Size = new System.Drawing.Size(182, 24);
+            this.MenuItem_Dbg.Size = new System.Drawing.Size(164, 22);
             this.MenuItem_Dbg.Text = "Debug Window";
             this.MenuItem_Dbg.Click += new System.EventHandler(this.aToolStripMenuItem1_Click);
             // 

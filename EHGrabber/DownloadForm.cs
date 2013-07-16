@@ -50,17 +50,18 @@ namespace EHGrabber
         {
             if (listView1.Items.Count == TaskIndex || GalleryName == null)
             {
+                if (Exitable) //All finished
+                {
+                    if (MainForm.Me.AutoOpen)
+                        System.Diagnostics.Process.Start(StorePath);
+                    Close();
+                }
                 timer1.Enabled = true;
                 return;
             }
             if (TaskIndex < listView1.Items.Count)
                 StartAsyncDownload();
-            else if (Exitable) //All finished
-            {
-                if (MainForm.Me.AutoOpen)
-                    System.Diagnostics.Process.Start(StorePath);
-                Close();
-            }/*
+            /*
             else //If there is still something we can download
             {
                 Text = "Downloader - Finding secondary server for slow files";
@@ -187,7 +188,7 @@ namespace EHGrabber
 
         private void DownloadForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (TaskIndex < listView1.Items.Count)
+            if (TaskIndex < listView1.Items.Count||!Exitable)
             {
                 if (DialogResult.No == MessageBox.Show(this, "Haven't finished downloading. Really wanna exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {

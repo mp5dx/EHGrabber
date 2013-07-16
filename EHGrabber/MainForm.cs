@@ -25,6 +25,8 @@ namespace EHGrabber
         public static int SecToSuspend=15;  // sec
         public static int FetchingInterval = 1000; // ms
 
+        private DownloadForm ActiveDownloader;
+
         public bool AutoOpen
         {
             get { return autoOpenToolStripMenuItem.Checked; }
@@ -129,10 +131,12 @@ namespace EHGrabber
                     {
                         toolStripStatusLabel1.Text = "Stop to login";
                     }
-                    DownloadForm Downloader=new DownloadForm(Library);
+                    DownloadForm Downloader = AutoDownload ? new DownloadForm(Library) : null ;
+                    ActiveDownloader = Downloader;
                     m_WorkThread = new Thread(() => new FrontPage(URLBox.Text,new DownloadContext(null,Downloader, Update_PageProgress)));
                     m_WorkThread.Start();
-                    Downloader.Show();
+                    if(Downloader!=null)
+                        Downloader.Show();
                     button1.Text = "Stop";
                     BtnStatus = true;
                 }
@@ -252,14 +256,12 @@ namespace EHGrabber
             {
                 Thread TmpThread = m_WorkThread;
                 m_WorkThread = null;
-                BtnStatus = false;
-                button1.Text = "Get!";
-                progressBar1.Value = 0;
-                progressBar2.Value = 0;
-                PicNumber = 0;
-                PageLabel.Text = "Page:";
-                PicLabel.Text = "Picture:";
-                SetWarningMessage(null);
+                if (ActiveDownloader != null)
+                {
+                    ActiveDownloader.Done = true;
+                    ActiveDownloader = null;
+                }
+
                 if (!LoginForm.Logined)
                 {
                     toolStripStatusLabel1.BackColor = SystemColors.Control;
@@ -268,6 +270,14 @@ namespace EHGrabber
                 if (AutoDownload && !Interrupt)
                     StartDownloadLVItems(Library);
                 TmpThread.Abort();
+                BtnStatus = false;
+                button1.Text = "Get!";
+                progressBar1.Value = 0;
+                progressBar2.Value = 0;
+                PicNumber = 0;
+                PageLabel.Text = "Page:";
+                PicLabel.Text = "Picture:";
+                SetWarningMessage(null);
             }
         }
 
