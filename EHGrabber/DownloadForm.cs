@@ -81,28 +81,37 @@ namespace EHGrabber
                 return;
             else
             {
-                if (e.Error != null)
+                do
                 {
-                    //listView1.Items[TaskIndex++].SubItems[3].Text = "Error";
-                    listView1.Items[TaskIndex].SubItems[1].Text = ResolveNewPicURL(listView1.Items[TaskIndex].SubItems[1].Text);
-                }
-                else
-                    listView1.Items[TaskIndex++].SubItems[3].Text = "Done";
+                    if (e.Cancelled)
+                        break;
+                    if (e.Error != null)
+                    {
+                        //listView1.Items[TaskIndex++].SubItems[3].Text = "Error";
+                        listView1.Items[TaskIndex].SubItems[1].Text = ResolveNewPicURL(listView1.Items[TaskIndex].SubItems[2].Text);
+                    }
+                    else
+                        listView1.Items[TaskIndex++].SubItems[3].Text = "Done";
+                } while (false);
             }
             timer1.Enabled = false;
+            timer2.Enabled = false;
             ProceedIfAble();
         }
 
         private void OnProgChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             listView1.Items[TaskIndex].SubItems[3].Text = string.Format("{0}%", e.ProgressPercentage);
+            timer2.Enabled = false;
+            timer2.Enabled = true;
         }
 
         private void StartAsyncDownload()
         {
+            timer1.Enabled = false;
             Downloader.DownloadFileAsync(new Uri(listView1.Items[TaskIndex].SubItems[1].Text), StorePath + listView1.Items[TaskIndex].SubItems[0].Text);
             listView1.Items[TaskIndex].SubItems[3].Text = "0%";
-            timer1.Enabled = false;
+            timer2.Enabled = true;
         }
 
         private void NormalizePath(ref string Path)
@@ -197,6 +206,13 @@ namespace EHGrabber
                 }
             }
             CleanUp();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            Downloader.CancelAsync();
+            listView1.Items[TaskIndex].SubItems[1].Text = ResolveNewPicURL(listView1.Items[TaskIndex].SubItems[2].Text);
+            timer2.Enabled = false;
         }
     }
 
