@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Windows;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Web;
 
 namespace EHGrabber
 {
@@ -161,7 +162,7 @@ namespace EHGrabber
         private string GetGalleryName()
         {
             Match Tag_gn=Regex.Match(m_source,@"<h1 id=""gn"">.*?<");
-            return Tag_gn.Value.Substring(12).TrimEnd('<');
+            return HttpUtility.HtmlDecode(Tag_gn.Value.Substring(12).TrimEnd('<'));
         }
 
         private void FetchPageList()

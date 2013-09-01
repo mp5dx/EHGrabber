@@ -33,3 +33,4 @@ C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\ob
 C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.DbgForm.resources
 C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.Properties.Resources.resources
 C:\Users\Shan Jiang\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.csproj.GenerateResource.Cache
+C:\Users\Class2016\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\bin\Release\EHGrabber.exe.config
