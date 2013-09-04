@@ -414,15 +414,23 @@ namespace EHGrabber
             string U, P;
             if (LoginForm.GetRegKey(out U, out P))
             {
-                if (!LoginForm.Login(U, P))
+                try
                 {
-                    MessageBox.Show("Your login data seems expired");
-                    LoginForm.ClearRegKey();
+                    if (!LoginForm.Login(U, P))
+                    {
+                        MessageBox.Show("Your login data seems expired");
+                        LoginForm.ClearRegKey();
+                    }
+                    else
+                    {
+                        toolStripStatusLabel1.Text = "Logined";
+                        toolStripStatusLabel1.BackColor = Color.MediumTurquoise;
+                    }
                 }
-                else
+                catch (System.Net.WebException ex)
                 {
-                    toolStripStatusLabel1.Text = "Logined";
-                    toolStripStatusLabel1.BackColor = Color.MediumTurquoise;
+                    MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
         }
