@@ -31,7 +31,7 @@ namespace EHGrabber
                     {
                         if (process.Id != current.Id)
                         {
-                            NativeMethods.SetForegroundWindow(process.MainWindowHandle);
+                            NativeMethods.SendMessage(process.MainWindowHandle, NativeMethods.WM_SYSCOMMAND, NativeMethods.SC_RESTORE, 0);
                             NativeMethods.FlashWindow(process.MainWindowHandle, true);
                             break;
                         }

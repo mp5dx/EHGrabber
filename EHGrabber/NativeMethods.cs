@@ -27,5 +27,12 @@ namespace EHGrabber
 
         [DllImport("user32.dll")]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        public const UInt32 WM_SYSCOMMAND = 0x0112;
+        public const UInt32 SC_RESTORE = 0xF120;
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, UInt32 wParam, UInt32 lParam);
+
     }
 }

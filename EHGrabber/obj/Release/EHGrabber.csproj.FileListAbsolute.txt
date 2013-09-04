@@ -9,3 +9,4 @@ C:\Users\Class2016\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj
 C:\Users\Class2016\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.csproj.GenerateResource.Cache
 C:\Users\Class2016\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.exe
 C:\Users\Class2016\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.pdb
+C:\Users\Class2016\Documents\Visual Studio 2010\Projects\EHGrabber\EHGrabber\obj\Release\EHGrabber.csprojResolveAssemblyReference.cache
