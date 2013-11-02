@@ -221,20 +221,20 @@
             this.toolStripSeparator2,
             this.MenuItem_Dbg});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(165, 126);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(183, 112);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // MenuItem_CopyAll
             // 
             this.MenuItem_CopyAll.Name = "MenuItem_CopyAll";
-            this.MenuItem_CopyAll.Size = new System.Drawing.Size(164, 22);
+            this.MenuItem_CopyAll.Size = new System.Drawing.Size(182, 24);
             this.MenuItem_CopyAll.Text = "Copy All";
             this.MenuItem_CopyAll.Click += new System.EventHandler(this.aToolStripMenuItem_Click);
             // 
             // MenuItem_CopySel
             // 
             this.MenuItem_CopySel.Name = "MenuItem_CopySel";
-            this.MenuItem_CopySel.Size = new System.Drawing.Size(164, 22);
+            this.MenuItem_CopySel.Size = new System.Drawing.Size(182, 24);
             this.MenuItem_CopySel.Text = "Copy Selected";
             this.MenuItem_CopySel.Visible = false;
             this.MenuItem_CopySel.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
@@ -242,12 +242,12 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(179, 6);
             // 
             // MenuItem_DldAll
             // 
             this.MenuItem_DldAll.Name = "MenuItem_DldAll";
-            this.MenuItem_DldAll.Size = new System.Drawing.Size(164, 22);
+            this.MenuItem_DldAll.Size = new System.Drawing.Size(182, 24);
             this.MenuItem_DldAll.Text = "Download All";
             this.MenuItem_DldAll.Visible = false;
             this.MenuItem_DldAll.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
@@ -255,12 +255,12 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(179, 6);
             // 
             // MenuItem_Dbg
             // 
             this.MenuItem_Dbg.Name = "MenuItem_Dbg";
-            this.MenuItem_Dbg.Size = new System.Drawing.Size(164, 22);
+            this.MenuItem_Dbg.Size = new System.Drawing.Size(182, 24);
             this.MenuItem_Dbg.Text = "Debug Window";
             this.MenuItem_Dbg.Click += new System.EventHandler(this.aToolStripMenuItem1_Click);
             // 
