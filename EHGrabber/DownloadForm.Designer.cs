@@ -94,11 +94,6 @@
             this.forceExitToolStripMenuItem.Text = "Force Exit";
             this.forceExitToolStripMenuItem.Click += new System.EventHandler(this.forceExitToolStripMenuItem_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 200;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // timer2
             // 
             this.timer2.Interval = 5000;

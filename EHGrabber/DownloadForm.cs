@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+//using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Threading;
 
 namespace EHGrabber
@@ -19,7 +19,7 @@ namespace EHGrabber
     {
         private int TaskIndex;
         private WebClient Downloader;
-        public string GalleryName;
+        private string Gallery;
         private bool Initialized;
         private string StorePath;
         private bool Exitable;
@@ -38,6 +38,21 @@ namespace EHGrabber
             set { Exitable = value; }
         }
 
+        public string GalleryName
+        {
+            get { return Gallery; }
+            set
+            {
+                Gallery = value.Replace('\\', ' ')
+                              .Replace('/', ' ').Replace(':', ' ')
+                              .Replace('*', ' ').Replace('?', ' ')
+                              .Replace('"', ' ').Replace('<', ' ')
+                              .Replace('>', ' ').Replace('|', ' ');
+                StorePath += GalleryName + '\\';
+                Directory.CreateDirectory(StorePath);
+            }
+        }
+
         private string ResolveNewPicURL(string PageURL)
         {
             Random Rand_nl = new Random();
@@ -46,64 +61,35 @@ namespace EHGrabber
             return Secondary.GetPicURL();
         }
 
-        private void ProceedIfAble()
+        private void OnComplete(object sender, AsyncCompletedEventArgs e,WorkerContext ctx)
         {
-            if (listView1.Items.Count == TaskIndex || GalleryName == null)
+            Lock.Release();
+            if (e.Cancelled)
+                return;
+            if (e.Error != null)
             {
-                if (Exitable) //All finished
+                //listView1.Items[TaskIndex++].SubItems[3].Text = "Error";
+                ctx.URL = ResolveNewPicURL(ctx.PageURL);
+                ThreadPool.QueueUserWorkItem(ThreadPoolWorker, ctx);
+            }
+            else
+            {
+                Complete++;
+                SetLVItemStatus(ctx.Index, "Done");
+                
+                //EventArr[index % 5].Set();
+                if (Complete == listView1.Items.Count && Exitable)
                 {
                     if (MainForm.Me.AutoOpen)
                         System.Diagnostics.Process.Start(StorePath);
-                    Close();
+                    Invoke(new MethodInvoker(delegate { Close(); })); 
                 }
-                timer1.Enabled = true;
-                return;
             }
-            if (TaskIndex < listView1.Items.Count)
-                StartAsyncDownload();
-            /*
-            else //If there is still something we can download
-            {
-                Text = "Downloader - Finding secondary server for slow files";
-                CleanUpDoneTasks();
-                foreach (ListViewItem SlowShits in listView1.Items)
-                {
-                    SlowShits.SubItems[1].Text = ResolveNewPicURL(SlowShits.SubItems[2].Text);
-                    SlowShits.SubItems[3].Text = "Waiting";
-                }
-                ProceedIfAble();
-            }*/
         }
 
-        private void OnComplete(object sender, AsyncCompletedEventArgs e)
+        private void OnProgChanged(object sender, DownloadProgressChangedEventArgs e,WorkerContext ctx)
         {
-            if (WannaExit)
-                return;
-            else
-            {
-                do
-                {
-                    if (e.Cancelled)
-                        break;
-                    if (e.Error != null)
-                    {
-                        //listView1.Items[TaskIndex++].SubItems[3].Text = "Error";
-                        listView1.Items[TaskIndex].SubItems[1].Text = ResolveNewPicURL(listView1.Items[TaskIndex].SubItems[2].Text);
-                    }
-                    else
-                        listView1.Items[TaskIndex++].SubItems[3].Text = "Done";
-                } while (false);
-            }
-            timer1.Enabled = false;
-            timer2.Enabled = false;
-            ProceedIfAble();
-        }
-
-        private void OnProgChanged(object sender, DownloadProgressChangedEventArgs e)
-        {
-            listView1.Items[TaskIndex].SubItems[3].Text = string.Format("{0}%", e.ProgressPercentage);
-            timer2.Enabled = false;
-            timer2.Enabled = true;
+            SetLVItemStatus(ctx.Index, string.Format("{0}%", e.ProgressPercentage));
         }
 
         private void StartAsyncDownload()
@@ -122,10 +108,59 @@ namespace EHGrabber
                 Path += '\\';
         }
 
+        Semaphore Lock;
+        int Complete;
+
+        private class WorkerContext
+        {
+            public string URL;
+            public string Filename;
+            public string PageURL;
+            public int Index;
+
+            public WorkerContext(int index, string url,string pageurl, string filename)
+            {
+                URL = url;
+                Filename = filename;
+                PageURL = pageurl;
+                Index = index;
+            }
+        }
+
+        private void ThreadPoolWorker(object Ctx)
+        {
+            WorkerContext Context = (WorkerContext)Ctx;
+            WebClient Downloader = new WebClient();
+            Downloader.DownloadProgressChanged += (sender,e)=>OnProgChanged(sender,e,Context);
+            Downloader.DownloadFileCompleted += (sender, e) => OnComplete(sender, e, Context);
+            Lock.WaitOne();
+            Downloader.DownloadFileAsync(new Uri(Context.URL), StorePath + Context.Filename);
+            SetLVItemStatus( Context.Index,"0%");
+        }
+        /*
+        private void WorkerThread()
+        {
+            for(int i=0;i<listView1.Items.Count;++i)
+            {
+                EventArr.Add(new ManualResetEvent(false));
+                ThreadPool.QueueUserWorkItem(ThreadPoolWorker, i);
+                if (EventArr.Count == 5 || i==listView1.Items.Count-1)
+                {
+                    WaitHandle.WaitAll(EventArr.ToArray());
+                    EventArr.Clear();
+                }
+            }
+            if (MainForm.Me.AutoOpen)
+                System.Diagnostics.Process.Start(StorePath);
+            Close();
+        }
+        */
         public DownloadForm(string SavePath = null)
         {
             InitializeComponent();
 
+            ThreadPool.SetMaxThreads(8,8);
+            Lock = new Semaphore(5, 5);
             CleanUpAlerter = new AutoResetEvent(false);
             TaskIndex = 0;
             Count++;
@@ -138,12 +173,21 @@ namespace EHGrabber
 
             StorePath = SavePath;
 
-            Downloader = new WebClient();
-            Downloader.DownloadFileCompleted += new AsyncCompletedEventHandler(OnComplete);
-            Downloader.DownloadProgressChanged += new DownloadProgressChangedEventHandler(OnProgChanged);
-            //listView1.Items[TaskIndex] = listView1.Items[0];
-            //StartAsyncDownload();
-            ProceedIfAble();
+            Complete = 0;
+
+        }
+
+
+        public void SetLVItemStatus(int index, string status)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new MethodInvoker(delegate { SetLVItemStatus(index, status); }));
+            }
+            else
+            {
+                listView1.Items[index].SubItems[3].Text = status;
+            }
         }
 
         public void AddFile(string PageURL, string PicURL)
@@ -159,32 +203,14 @@ namespace EHGrabber
                 ListItem.SubItems.Add(PicURL);
                 ListItem.SubItems.Add(PageURL);
                 ListItem.SubItems.Add("Waiting");
+                ThreadPool.QueueUserWorkItem(ThreadPoolWorker, new WorkerContext(ListItem.Index,PicURL,PageURL,FileName));
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (listView1.Items.Count != TaskIndex)
-            {
-                timer1.Enabled = false;
-                if (GalleryName != null && !Initialized)
-                {
-                    GalleryName = GalleryName.Replace('\\', ' ')
-                        .Replace('/', ' ').Replace(':', ' ')
-                        .Replace('*', ' ').Replace('?', ' ')
-                        .Replace('"', ' ').Replace('<', ' ')
-                        .Replace('>', ' ').Replace('|', ' ');
-                    StorePath += GalleryName + '\\';
-                    Directory.CreateDirectory(StorePath);
-                    Initialized = true;
-                }
-                ProceedIfAble();
-            }
-        }
+
 
         private void CleanUp()
         {
-            Downloader.CancelAsync();
             WannaExit = true;
             //CleanUpAlerter.WaitOne();
             Count--;
@@ -197,7 +223,7 @@ namespace EHGrabber
 
         private void DownloadForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (TaskIndex < listView1.Items.Count||!Exitable)
+            if (Complete!=listView1.Items.Count||!Exitable)
             {
                 if (DialogResult.No == MessageBox.Show(this, "Haven't finished downloading. Really wanna exit?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
